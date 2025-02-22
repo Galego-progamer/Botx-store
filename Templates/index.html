@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar {
+            background-color: #333;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .profile-menu {
+            position: relative;
+            cursor: pointer;
+        }
+        .profile-menu img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: #444;
+            padding: 10px;
+            border-radius: 5px;
+            width: 150px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .dropdown a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown a:hover {
+            background-color: #555;
+        }
+        .light-theme {
+            background-color: #f0f0f0;
+            color: black;
+        }
+        .dark-theme {
+            background-color: #000;
+            color: white;
+        }
+    </style>
+</head>
+<body class="dark-theme">
+
+    <div class="navbar">
+        <div>BOTX STORE</div>
+        <div class="profile-menu" onclick="toggleDropdown()">
+            <img src="https://via.placeholder.com/30" alt="Perfil">
+            <div class="dropdown" id="dropdownMenu">
+                <a href="{{ url_for('logout') }}">Sair</a>
+                <a href="javascript:void(0);" onclick="toggleTheme()">Trocar Tema</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Função para alternar a visibilidade do menu dropdown
+        function toggleDropdown() {
+            var dropdown = document.getElementById('dropdownMenu');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Função para alternar o tema entre claro e escuro
+        function toggleTheme() {
+            var body = document.body;
+            body.classList.toggle('dark-theme');
+            body.classList.toggle('light-theme');
+        }
+
+        // Fechar o menu dropdown se o usuário clicar fora
+        window.onclick = function(event) {
+            if (!event.target.matches('.profile-menu, .profile-menu *')) {
+                var dropdown = document.getElementById('dropdownMenu');
+                if (dropdown.style.display === 'block') {
+                    dropdown.style.display = 'none';
+                }
+            }
+        }
+    </script>
+</style>
+</head>
+<body>
+    <h1>Bem-vindo à Loja de Bots</h1>
+    
+    <div class="product">
+        <h2>Bot de Venda</h2>
+        <p>Este bot realiza vendas de forma automatizada no seu servidor.</p>
+        <a href="https://discord.gg/tBcfB5j3Yf" class="btn">Comprar</a>
+    </div>
+    
+    <div class="product">
+        <h2>Bot de Moderação</h2>
+        <p>Este bot ajuda na moderação do seu servidor, com várias funcionalidades.</p>
+        <a href="https://discord.gg/tBcfB5j3Yf" class="btn">Comprar</a>
+    </div>
+
+    <div class="product">
+        <h2>Bot de Ticket</h2>
+        <p>Gerencie tickets e suporte no seu servidor com esse bot.</p>
+        <a href="https://discord.gg/tBcfB5j3Yf" class="btn">Comprar</a>
+    </div>
+
+    <div class="product">
+        <h2>Clone de Server</h2>
+        <p>Clone um servidor mandando o link para o adm.</p>
+        <a href="https://discord.gg/tBcfB5j3Yf" class="btn">Comprar</a>
+    </div>
+
+    <div class="product">
+        <h2>Nitro Gift</h2>
+        <p>Compre Nitro Gift para você ou amigos.</p>
+        <a href="https://discord.gg/tBcfB5j3Yf" class="btn">Comprar</a>
+    </div>
+    
+</body>
+</html>
